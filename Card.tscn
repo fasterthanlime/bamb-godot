@@ -41,5 +41,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="gui_input" from="." to="." method="_OnGuiInput"]
 [connection signal="mouse_entered" from="." to="." method="_OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="_OnMouseExited"]

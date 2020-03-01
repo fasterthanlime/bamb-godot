@@ -47,7 +47,7 @@ public class Deck : Node2D
             var card = template.Instance() as Card;
             card.Team = team;
             card.Spec = spec;
-            card.SetPosition(new Vector2(x, y));
+            card.Target = new Vector2(x, y);
             AddChild(card);
 
             x += Card.WIDTH + padding;
