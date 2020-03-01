@@ -4,18 +4,17 @@ using System.Collections.Generic;
 
 public class Deck : Node2D
 {
-    private Team _team = Team.Blue;
-
+    private Team team = Team.Blue;
     [Export]
-    public Team team
+    public Team Team
     {
         get
         {
-            return _team;
+            return team;
         }
         set
         {
-            _team = value;
+            team = value;
             SyncProps();
         }
     }
@@ -24,8 +23,8 @@ public class Deck : Node2D
 
     private void SyncProps()
     {
-        var bg = GetNode("Background") as ColorRect;
-        bg.Color = _team.Color();
+        var bg = GetNode("Background") as TextureRect;
+        bg.Modulate = team.Color();
 
         Update();
     }
@@ -37,15 +36,17 @@ public class Deck : Node2D
         // instantiate all cards
         var template = ResourceLoader.Load<PackedScene>("res://Card.tscn");
 
-        var padding = 5.0f;
-        var x = padding;
-        var y = padding;
+        var margin = 10.0f;
+        var padding = 10.0f;
+        var x = margin + padding;
+        var y = margin + padding;
 
         var specs = fullDeck();
         foreach (var spec in specs)
         {
             var card = template.Instance() as Card;
-            card.spec = spec;
+            card.Team = team;
+            card.Spec = spec;
             card.Position = new Vector2(x, y);
             x += Card.WIDTH + padding;
             AddChild(card);

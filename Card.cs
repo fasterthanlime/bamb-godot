@@ -3,25 +3,39 @@ using System;
 
 public class Card : Node2D
 {
-    private CardSpec _spec;
+    // Constants
+    public const float WIDTH = 64.0f;
+    public const float HEIGHT = 64.0f;
 
-    public const float WIDTH = 50.0f;
-    public const float HEIGHT = 50.0f;
-
-    public CardSpec spec
+    // Properties
+    private CardSpec spec;
+    [Export]
+    public CardSpec Spec
     {
-        get { return _spec; }
+        get { return spec; }
         set
         {
-            _spec = value;
+            spec = value;
+            SyncProps();
         }
+    }
+
+    private Team team;
+    [Export]
+    public Team Team
+    {
+        get { return team; }
+        set { team = value; SyncProps(); }
     }
 
 
     private void SyncProps()
     {
-        var label = GetNode("Background/Label") as Label;
-        label.Text = _spec.Text();
+        var label = GetNode("Label") as Label;
+        label.Text = spec.Text();
+
+        var bg = GetNode("Background") as Control;
+        bg.Modulate = team.Color();
 
         Update();
     }

@@ -10,7 +10,7 @@ public class Main : Node2D
 
         var board = GetNode("Board");
 
-        card.spec = new CardSpec { kind = CardKind.Down };
+        card.Spec = new CardSpec { kind = CardKind.Down };
         card.Position = new Vector2(40, 40);
         board.AddChild(card);
     }
