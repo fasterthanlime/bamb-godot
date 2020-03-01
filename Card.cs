@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Card : Node2D
+public class Card : Control
 {
     // Constants
     public const float WIDTH = 64.0f;
@@ -44,6 +44,16 @@ public class Card : Node2D
     public override void _Ready()
     {
         SyncProps();
+    }
+
+    public void _OnMouseEntered()
+    {
+        GD.Print($"Mouse entered {team} {spec.Text()} card");
+    }
+
+    public void _OnMouseExited()
+    {
+        GD.Print($"Mouse exited {team} {spec.Text()} card");
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.
