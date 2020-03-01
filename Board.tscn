@@ -1,0 +1,20 @@
+[gd_scene format=2]
+
+[node name="Board" type="Control"]
+margin_left = 330.17
+margin_top = 124.54
+margin_right = 691.17
+margin_bottom = 437.54
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.80499
+margin_right = 1.80499
+color = Color( 0.411765, 0.54902, 0.694118, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
